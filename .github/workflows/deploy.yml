@@ -31,3 +31,8 @@ jobs:
       # Construire l'image Docker (optionnel pour test)
       - name: Build Docker image
         run: docker build -t iris-api .
+      
+      # Lancer les tests unitaires
+      - name: Run tests
+        run: pytest tests/
+
