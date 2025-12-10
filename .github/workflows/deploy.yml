@@ -1,0 +1,33 @@
+name: Build FastAPI Docker
+
+# Déclenche le workflow à chaque push sur la branche main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Récupère le code du repo
+      - uses: actions/checkout@v3
+
+      # Installe Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Installe les dépendances
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Affiche la version Python pour vérifier
+      - name: Check Python version
+        run: python --version
+
+      # Construire l'image Docker (optionnel pour test)
+      - name: Build Docker image
+        run: docker build -t iris-api .
