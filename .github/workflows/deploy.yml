@@ -28,11 +28,13 @@ jobs:
       - name: Check Python version
         run: python --version
 
+      # Lancer les tests unitaires
+      - name: Run tests
+        run: pytest tests/
+
       # Construire l'image Docker (optionnel pour test)
       - name: Build Docker image
         run: docker build -t iris-api .
       
-      # Lancer les tests unitaires
-      - name: Run tests
-        run: pytest tests/
+
 
